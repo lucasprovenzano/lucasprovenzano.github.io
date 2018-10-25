@@ -31,6 +31,7 @@ function ExportToTable() {
                                 tablediv.style.display = 'block';
                                 DibujarTabla(exceljson, '#exceltable');  
                                 DibujarGrafico(exceljson,'#myChart');
+                                foms(exceljson);
                                 cnt++;  
                             }  
                         });  
@@ -154,13 +155,13 @@ var chart = new Chart(ctx, {
     // The data for our dataset
     data: {
             datasets: [{
-            label: "iso",
+            label: "Iso Effective",
             fill: false,
             borderColor: 'rgb(255, 99, 132)',
             data: data,
             radius: 0,
             },{
-            label: "dw",
+            label: "RBE Equivalent",
             fill: false,
             borderColor: 'rgb(132, 99, 255)',
             data: data2,
@@ -280,4 +281,60 @@ function isoE(jsondata){
         
         jsondata[i].iso = 0.5*(alphabeta_r/Gr)*(Math.pow(1+(4*Gr/alpha_r/alphabeta_r)*(Dosis_Tlineal+Dosis_Tcuad),0.5)-1);
     }
+}
+
+function foms(jsondata){
+
+var iso_dose = jsondata.map(function (el) { return el.iso; });
+var w_dose = jsondata.map(function (el) { return el.dw; });
+
+var iso_max = iso_dose[0];
+var iso_min = iso_dose[0];
+var sum_iso = 0;
+
+var w_max = w_dose[0];
+var w_min = w_dose[0];
+var sum_w = 0;
+
+for (var i = 0; i < iso_dose.length; i++) {
+    if (iso_dose[i]>iso_max) { iso_max = iso_dose[i]}
+    if (iso_dose[i]<iso_min) { iso_min = iso_dose[i]}
+    sum_iso += iso_dose[i];
+
+    if (w_dose[i]>w_max) { w_max = w_dose[i]}
+    if (w_dose[i]<w_min) { w_min = w_dose[i]}
+    sum_w += w_dose[i];
+}
+
+var iso_mean = sum_iso/iso_dose.length;
+var w_mean = sum_w/w_dose.length;
+
+var max_txt_iso = "Max: " + iso_max.toPrecision(4) + " Gyiso";
+var mean_txt_iso = "Mean: " + iso_mean.toPrecision(4) + " Gyiso";
+var min_txt_iso = "Min: " + iso_min.toPrecision(4) + " Gyiso";
+
+var dmax_iso = document.getElementById('d_max_iso');
+var dmean_iso = document.getElementById('d_mean_iso');
+var dmin_iso = document.getElementById('d_min_iso');
+
+dmax_iso.innerHTML = max_txt_iso;
+dmean_iso.innerHTML = mean_txt_iso;
+dmin_iso.innerHTML = min_txt_iso;
+
+var max_txt_w = "Max: " + w_max.toPrecision(4) + " Gyw";
+var mean_txt_w = "Mean: " + w_mean.toPrecision(4) + " Gyw";
+var min_txt_w = "Min: " + w_min.toPrecision(4) + " Gyw";
+
+var dmax_w = document.getElementById('d_maxw');
+var dmean_w = document.getElementById('d_meanw');
+var dmin_w = document.getElementById('d_minw');
+
+dmax_w.innerHTML = max_txt_w;
+dmean_w.innerHTML = mean_txt_w;
+dmin_w.innerHTML = min_txt_w;
+
+var fom_id = document.getElementById('fom');
+
+$(fom_id).show();
+
 }
