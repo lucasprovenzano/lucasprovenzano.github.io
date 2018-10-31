@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"di",
+				"display\tproperty"
+			],
+			[
+				"iso",
+				"iso_min"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"col",
+				"col-10"
+			],
+			[
+				"fom",
+				"fom_id"
+			],
+			[
 				"is",
 				"isoE"
 			],
@@ -22,10 +42,6 @@
 			[
 				"alpha",
 				"alpha_r"
-			],
-			[
-				"i",
-				"i"
 			],
 			[
 				"for",
@@ -64,7 +80,7 @@
 			"file": "exptable.js",
 			"settings":
 			{
-				"buffer_size": 10422,
+				"buffer_size": 12095,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -87,13 +103,10 @@
 			}
 		},
 		{
-			"contents": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title>BNCT</title>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"stylesheet\" href=\"css/css_tablas.css\">\n   <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js\"></script>\n  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js\"></script>\n  <script src=\"exptable.js\"></script>\n \n  <script src=\"https://unpkg.com/xlsx/dist/xlsx.full.min.js\"></script>\n</head>\n<body>\n\n<nav class=\"navbar navbar-expand-md bg-dark navbar-dark fixed-top\"\">\n  <a class=\"navbar-brand\" href=\"index.html\">BNCT</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"background.html\">Background</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"calculator.html\">Calculator</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"faqs.html\">FAQs</a>\n      </li>    \n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"bibliography.html\">Bibliography</a>\n      </li>    \n    </ul>\n  </div>  \n</nav>\n<br>\n\n<div class=\"container\" style=\"margin-top:80px;\">\n  <h3>Calculator</h3>\n  <p>Tumor Boron concentration [ppm]: <input id=\"b10tumor\"></p>\n  <p>Irradiation Time [min]: <input id=\"tir\"></p>\n  <p>Dose Values: <input type=\"file\" id=\"excelfile\" /> <input type=\"button\" id=\"viewfile\" value=\"Calculate\" onclick=\"ExportToTable()\"  class=\"btn btn-dark\"/></p>\n  <p id=\"alert\"></p>\n</div>\n<div class = \"container\" id=\"tabla_datos\" style=\" display: none;\">\n  <div class=\"row\">\n    <div class=\"col\">\n    </div>\n<div class=\"col-10 table-responsive\">\n        <table class=\"table table-sm fixed_header\">\n          <thead class=\"table-dark\">\n            <tr>\n              <th style='text-align: center;'>Boron</th>\n              <th style='text-align: center;'>Thermal</th>\n              <th style='text-align: center;'>Fast</th>\n              <th style='text-align: center;'>Gamma</th>\n              <th style='text-align: center;'>Dw</th>\n              <th style='text-align: center;'>isoE</th>\n            </tr>\n          </thead>\n          <tbody id=\"exceltable\">\n          </tbody>\n        </table>\n</div>\n    <div class=\"col\">\n    </div>\n  </div>\n</div>\n\n<div class=\"container\">\n  <canvas id=\"myChart\"></canvas>\n</div>\n<!--    <table class=\"table table-sm\" id=\"exceltable\">  \n    </table> --> \n</body>\n</html>\n\n\n\n\n",
 			"file": "calculator.html",
-			"file_size": 3068,
-			"file_write_time": 131837749759498067,
 			"settings":
 			{
-				"buffer_size": 3065,
+				"buffer_size": 4195,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -135,6 +148,7 @@
 	],
 	"file_history":
 	[
+		"/Users/lucasprovenzano/Desktop/isoweb/calculator.html",
 		"/Users/lucasprovenzano/Desktop/isoweb/background.html",
 		"/Users/lucasprovenzano/Desktop/isoweb/index.html",
 		"/Users/lucasprovenzano/Desktop/isoweb/faqs.html",
@@ -263,7 +277,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -272,15 +286,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10422,
+						"buffer_size": 12095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6411,
-								6411
+								6371,
+								6371
 							]
 						],
 						"settings":
@@ -290,7 +304,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2654.0,
+						"translation.y": 3138.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -320,10 +334,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1076.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -368,15 +382,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3065,
+						"buffer_size": 4195,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3045,
-								3045
+								3977,
+								3977
 							]
 						],
 						"settings":
@@ -386,7 +400,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1093.0,
+						"translation.y": 1782.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -428,7 +442,7 @@
 		"rows":
 		[
 			0.0,
-			0.135131526098,
+			0.229222604054,
 			1.0
 		]
 	},

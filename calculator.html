@@ -5,53 +5,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/css_tablas.css">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="exptable.js"></script>
- 
   <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-52881812-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-52881812-2');
+  </script>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top"">
-  <a class="navbar-brand" href="index.html">BNCT</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="background.html">Background</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="calculator.html">Calculator</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="faqs.html">FAQs</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="bibliography.html">Bibliography</a>
-      </li>    
-    </ul>
-  </div>  
-</nav>
-<br>
-
-<div class="container" style="margin-top:80px;">
-  <h3>Calculator</h3>
-  <p>Tumor Boron concentration [ppm]: <input id="b10tumor"></p>
-  <p>Irradiation Time [min]: <input id="tir"></p>
-  <p>Dose Values: <input type="file" id="excelfile" /> <input type="button" id="viewfile" value="Calculate" onclick="ExportToTable()"  class="btn btn-dark"/></p>
-  <p id="alert"></p>
-</div>
-<div class = "container" id="tabla_datos" style=" display: none;">
-  <div class="row">
-    <div class="col">
-    </div>
-<div class="col-10 table-responsive">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top"">
+    <a class="navbar-brand" href="index.html">BNCT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="calculator.html">Iso-Effective Dose Calculator</a>
+        </li>
+      </ul>
+    </div>  
+  </nav>
+  <br>
+  <div class="container" style="margin-top:80px;">
+    <h3>Calculator</h3>
+    <p>Tumor Boron concentration [ppm]: <input id="b10tumor"></p>
+    <p>Irradiation Time [min]: <input id="tir"></p>
+    <p>Dose Values: <input type="file" id="excelfile" /> <input type="button" id="viewfile" value="Calculate" onclick="ExportToTable()"  class="btn btn-dark"/></p>
+    <p id="alert"></p>
+  </div>
+  <div class = "container" id="tabla_datos" style=" display: none;">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-10 table-responsive">
         <table class="table table-sm fixed_header">
           <thead class="table-dark">
             <tr>
@@ -66,46 +63,44 @@
           <tbody id="exceltable">
           </tbody>
         </table>
-</div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+  <div class="container" id="fom" style="display: none">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-10 row table-dark" style='text-align: center;'>
+       Iso-Effective FOMS:
+     </div>
+     <div class="col">
+     </div>
+   </div>
+   <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-10 row">
+      <div  class="col-sm" id="d_max_iso"></div>
+      <div  class="col-sm" id="d_mean_iso"></div>
+      <div  class="col-sm" id="d_min_iso"></div>
+    </div>
     <div class="col">
     </div>
   </div>
-</div>
-
-<div class="container" id="fom" style="display: none">
-    <div class="row">
-  <div class="col">
-  </div>
-  <div class="col-10 row table-dark" style='text-align: center;'>
-   Iso-Effective FOMS:
-  </div>
-  <div class="col">
-  </div>
-  </div>
 
   <div class="row">
-  <div class="col">
-  </div>
-  <div class="col-10 row">
-    <div  class="col-sm" id="d_max_iso"></div>
-    <div  class="col-sm" id="d_mean_iso"></div>
-    <div  class="col-sm" id="d_min_iso"></div>
-  </div>
-  <div class="col">
-  </div>
-  </div>
+    <div class="col">
+    </div>
+    <div class="col-10 row table-dark" style='text-align: center;'>
+     RBE equivalent FOMS:
+   </div>
+   <div class="col">
+   </div>
+ </div>
 
-<div class="row">
-  <div class="col">
-  </div>
-  <div class="col-10 row table-dark" style='text-align: center;'>
-   RBE equivalent FOMS:
-  </div>
-  <div class="col">
-  </div>
-  </div>
-
-  <div class="row">
+ <div class="row">
   <div class="col">
   </div>
   <div class="col-10 row">
@@ -115,17 +110,17 @@
   </div>
   <div class="col">
   </div>
-  </div>
+</div>
 
 <div class="row">
   <div class="col">
   </div>
   <div class="col-10 row table-dark" style='text-align: center;'>
    DVH:
-  </div>
-  <div class="col">
-  </div>
-  </div>
+ </div>
+ <div class="col">
+ </div>
+</div>
 
 </div>
 <div class="container">
@@ -133,7 +128,7 @@
 </div>
 
 <!--    <table class="table table-sm" id="exceltable">  
-    </table> --> 
+</table> --> 
 
 
 </body>

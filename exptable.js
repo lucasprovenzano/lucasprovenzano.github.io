@@ -47,48 +47,48 @@ function ExportToTable() {
             }  
             else {  
                 alert("Please upload a valid Excel file!");  
+            }
         }
-    }
         else {
-             alert("Please check Boron concentration value");
-        } 
-    }
-        else { 
-            alert("Please check irradiation time ");
-        }
-    } 
- 
- function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/  
-     var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/  
-     for (var i = 0; i < jsondata[i].length; i++) {  
-         var row$ = $('<tr/>');  
-         for (var colIndex = 0; colIndex < columns.length; colIndex++) {  
-             var cellValue = jsondata[i][columns[colIndex]];  
-             if (cellValue == null)  
-                 cellValue = "";  
-             row$.append($('<td/>').html(cellValue));  
-         }  
-         $(tableid).append(row$);  
-     }  
- }  
- function BindTableHeader(jsondata, tableid) {/*Function used to get all column names from JSON and bind the html table header*/  
-     var columnSet = [];  
-     var headerTr$ = $('<tr/>');  
-     for (var i = 0; i < jsondata.length; i++) {  
-         var rowHash = jsondata[i];  
-         for (var key in rowHash) {  
-             if (rowHash.hasOwnProperty(key)) {  
-                 if ($.inArray(key, columnSet) == -1) {/*Adding each unique column names to a variable array*/  
-                     columnSet.push(key);  
-                     headerTr$.append($('<th/>').html(key));  
-                 }  
-             }  
-         }  
-     }  
-     $(tableid).append(headerTr$);  
-     return columnSet;  
- }  
- function Dw(jsondata){
+           alert("Please check Boron concentration value");
+       } 
+   }
+   else { 
+    alert("Please check irradiation time ");
+}
+} 
+
+function BindTable(jsondata, tableid) {/*Function used to convert the JSON array to Html Table*/  
+   var columns = BindTableHeader(jsondata, tableid); /*Gets all the column headings of Excel*/  
+   for (var i = 0; i < jsondata[i].length; i++) {  
+       var row$ = $('<tr/>');  
+       for (var colIndex = 0; colIndex < columns.length; colIndex++) {  
+           var cellValue = jsondata[i][columns[colIndex]];  
+           if (cellValue == null)  
+               cellValue = "";  
+           row$.append($('<td/>').html(cellValue));  
+       }  
+       $(tableid).append(row$);  
+   }  
+}  
+function BindTableHeader(jsondata, tableid) {/*Function used to get all column names from JSON and bind the html table header*/  
+   var columnSet = [];  
+   var headerTr$ = $('<tr/>');  
+   for (var i = 0; i < jsondata.length; i++) {  
+       var rowHash = jsondata[i];  
+       for (var key in rowHash) {  
+           if (rowHash.hasOwnProperty(key)) {  
+               if ($.inArray(key, columnSet) == -1) {/*Adding each unique column names to a variable array*/  
+                   columnSet.push(key);  
+                   headerTr$.append($('<th/>').html(key));  
+               }  
+           }  
+       }  
+   }  
+   $(tableid).append(headerTr$);  
+   return columnSet;  
+}  
+function Dw(jsondata){
     var rbe_boro = 3.8;
     var rbe_thn = 3.2;
     var rbe_fastn = 3.2;
@@ -98,11 +98,11 @@ function ExportToTable() {
     var tir = Number(document.getElementById("tir").value);
 
     for (var i = 0; i < jsondata.length; i++) {
-         jsondata[i].dw = ((jsondata[i].boron*rbe_boro*btumor)+(jsondata[i].thermal*rbe_thn)+(jsondata[i].fast*rbe_fastn)+(jsondata[i].gamma*rbe_g))*tir;
-    } 
- }
+       jsondata[i].dw = ((jsondata[i].boron*rbe_boro*btumor)+(jsondata[i].thermal*rbe_thn)+(jsondata[i].fast*rbe_fastn)+(jsondata[i].gamma*rbe_g))*tir;
+   } 
+}
 
- function DibujarTabla(jsondata, tableid){
+function DibujarTabla(jsondata, tableid){
     var tabla = "";
     for (var i = 0; i < jsondata.length; i++) {
         tabla = tabla + "<tr style='text-align: center;'>"
@@ -113,11 +113,11 @@ function ExportToTable() {
     } 
     $(tableid).append(tabla);
 
- }
+}
 function DibujarGrafico(jsondata,chartid){
 
-var xData = jsondata.map(function (el) { return el.iso; });
-var xData2 = jsondata.map(function (el) { return el.dw; });
+    var xData = jsondata.map(function (el) { return el.iso; });
+    var xData2 = jsondata.map(function (el) { return el.dw; });
 //var yData = jsondata.map(function (el) { return el.thermal; });
 
 var xData = xData.sort((a,b)=>a-b);
@@ -138,14 +138,14 @@ const data = xData.map((x, i) => {
   return {
     x: x,
     y: yData[i]
-  };
+};
 });
 
 const data2 = xData2.map((x, i) => {
   return {
     x: x,
     y: yData[i]
-  };
+};
 });
 
 var ctx = document.getElementById('myChart').getContext('2d');
@@ -154,38 +154,38 @@ var chart = new Chart(ctx, {
     type: 'scatter',
     // The data for our dataset
     data: {
-            datasets: [{
+        datasets: [{
             label: "Iso Effective",
             fill: false,
             borderColor: 'rgb(255, 99, 132)',
             data: data,
             radius: 0,
-            },{
+        },{
             label: "RBE Equivalent",
             fill: false,
             borderColor: 'rgb(132, 99, 255)',
             data: data2,
             radius: 0,
-            }]
-        },
+        }]
+    },
     // Configuration options go here
     options: {
         scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Dose'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Vol[%]'
-                        }
-                    }]
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Dose'
                 }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Vol[%]'
+                }
+            }]
+        }
     }
 });
 }
@@ -252,21 +252,21 @@ function isoE(jsondata){
     
     for (var i = 0; i < jsondata.length; i++) {
         Dt = (btumor*jsondata[i].boron) +(jsondata[i].thermal)+(jsondata[i].fast)+(jsondata[i].gamma);
-    
+        
         p_bnctB = (jsondata[i].boron*btumor)/Dt;
         p_bnctN = (jsondata[i].thermal+jsondata[i].fast)/Dt;
         p_g = jsondata[i].gamma/Dt;
-    
+        
         G_12 = Gs-(p_bnctB*pf_bnct+p_bnctN*pf_bnct)*(Gs-Gf);
         G_23 = Gs-(p_bnctN*pf_bnct+p_g*pf_g)*(Gs-Gf);
         G_31 = Gs-(p_g*pf_g+p_bnctB*pf_bnct)*(Gs-Gf);
-    
+        
         Dosis_Tlineal = alphaboro*(jsondata[i].boron*btumor);
         Dosis_Tlineal += (alphanth*jsondata[i].thermal);
         Dosis_Tlineal += (alphanfast*jsondata[i].fast);
         Dosis_Tlineal += (alpha_r*jsondata[i].gamma);
         Dosis_Tlineal = Dosis_Tlineal*tir;
-    
+        
         Dosis_Tcuad =  G_11*beta_boro*Math.pow(jsondata[i].boron*btumor,2);
         Dosis_Tcuad += G_22*beta_nth*Math.pow(jsondata[i].thermal,2);
         Dosis_Tcuad += G_22*beta_nfast*Math.pow(jsondata[i].fast,2);
@@ -285,56 +285,56 @@ function isoE(jsondata){
 
 function foms(jsondata){
 
-var iso_dose = jsondata.map(function (el) { return el.iso; });
-var w_dose = jsondata.map(function (el) { return el.dw; });
+    var iso_dose = jsondata.map(function (el) { return el.iso; });
+    var w_dose = jsondata.map(function (el) { return el.dw; });
 
-var iso_max = iso_dose[0];
-var iso_min = iso_dose[0];
-var sum_iso = 0;
+    var iso_max = iso_dose[0];
+    var iso_min = iso_dose[0];
+    var sum_iso = 0;
 
-var w_max = w_dose[0];
-var w_min = w_dose[0];
-var sum_w = 0;
+    var w_max = w_dose[0];
+    var w_min = w_dose[0];
+    var sum_w = 0;
 
-for (var i = 0; i < iso_dose.length; i++) {
-    if (iso_dose[i]>iso_max) { iso_max = iso_dose[i]}
-    if (iso_dose[i]<iso_min) { iso_min = iso_dose[i]}
-    sum_iso += iso_dose[i];
+    for (var i = 0; i < iso_dose.length; i++) {
+        if (iso_dose[i]>iso_max) { iso_max = iso_dose[i]}
+            if (iso_dose[i]<iso_min) { iso_min = iso_dose[i]}
+                sum_iso += iso_dose[i];
 
-    if (w_dose[i]>w_max) { w_max = w_dose[i]}
-    if (w_dose[i]<w_min) { w_min = w_dose[i]}
-    sum_w += w_dose[i];
-}
+            if (w_dose[i]>w_max) { w_max = w_dose[i]}
+                if (w_dose[i]<w_min) { w_min = w_dose[i]}
+                    sum_w += w_dose[i];
+            }
 
-var iso_mean = sum_iso/iso_dose.length;
-var w_mean = sum_w/w_dose.length;
+            var iso_mean = sum_iso/iso_dose.length;
+            var w_mean = sum_w/w_dose.length;
 
-var max_txt_iso = "Max: " + iso_max.toPrecision(4) + " Gyiso";
-var mean_txt_iso = "Mean: " + iso_mean.toPrecision(4) + " Gyiso";
-var min_txt_iso = "Min: " + iso_min.toPrecision(4) + " Gyiso";
+            var max_txt_iso = "Max: " + iso_max.toPrecision(4) + " Gyiso";
+            var mean_txt_iso = "Mean: " + iso_mean.toPrecision(4) + " Gyiso";
+            var min_txt_iso = "Min: " + iso_min.toPrecision(4) + " Gyiso";
 
-var dmax_iso = document.getElementById('d_max_iso');
-var dmean_iso = document.getElementById('d_mean_iso');
-var dmin_iso = document.getElementById('d_min_iso');
+            var dmax_iso = document.getElementById('d_max_iso');
+            var dmean_iso = document.getElementById('d_mean_iso');
+            var dmin_iso = document.getElementById('d_min_iso');
 
-dmax_iso.innerHTML = max_txt_iso;
-dmean_iso.innerHTML = mean_txt_iso;
-dmin_iso.innerHTML = min_txt_iso;
+            dmax_iso.innerHTML = max_txt_iso;
+            dmean_iso.innerHTML = mean_txt_iso;
+            dmin_iso.innerHTML = min_txt_iso;
 
-var max_txt_w = "Max: " + w_max.toPrecision(4) + " Gyw";
-var mean_txt_w = "Mean: " + w_mean.toPrecision(4) + " Gyw";
-var min_txt_w = "Min: " + w_min.toPrecision(4) + " Gyw";
+            var max_txt_w = "Max: " + w_max.toPrecision(4) + " Gyw";
+            var mean_txt_w = "Mean: " + w_mean.toPrecision(4) + " Gyw";
+            var min_txt_w = "Min: " + w_min.toPrecision(4) + " Gyw";
 
-var dmax_w = document.getElementById('d_maxw');
-var dmean_w = document.getElementById('d_meanw');
-var dmin_w = document.getElementById('d_minw');
+            var dmax_w = document.getElementById('d_maxw');
+            var dmean_w = document.getElementById('d_meanw');
+            var dmin_w = document.getElementById('d_minw');
 
-dmax_w.innerHTML = max_txt_w;
-dmean_w.innerHTML = mean_txt_w;
-dmin_w.innerHTML = min_txt_w;
+            dmax_w.innerHTML = max_txt_w;
+            dmean_w.innerHTML = mean_txt_w;
+            dmin_w.innerHTML = min_txt_w;
 
-var fom_id = document.getElementById('fom');
+            var fom_id = document.getElementById('fom');
 
-$(fom_id).show();
+            $(fom_id).show();
 
-}
+        }
