@@ -33,14 +33,17 @@
         <li class="nav-item">
           <a class="nav-link" href="calculator.html">Iso-Effective Dose Calculator</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
       </ul>
     </div>  
   </nav>
   <br>
   <div class="container" style="margin-top:50px">
 
-    <h3>Photon-Isoeffective dose calculator</h3>
-    <p>At the moment, this webapp just allow you to calculate photon-isoeffective doses for head and neck tumors treated with BNCT. More models will be added in near future. The formalism of the calculation is described in the follow withe papers:</p>
+    <h3>Photon iso-effective dose calculator</h3>
+    <p>For the moment, this webapp allows you to calculate photon iso-effective doses for head and neck tumors treated with BNCT. The radiobiological parameters of the model are based on in-vivo tumor control data. Additional models will be added in the near future. The formalism of the calculation is described in the following publications:</p>
     <ul>
       <li>
         <a href="http://iopscience.iop.org/article/10.1088/1361-6560/aa8986/meta">Photon iso-effective dose for cancer treatment with mixed field radiation based on dose–response assessment from human and an animal model: clinical application to boron neutron capture therapy for head and neck cancer</a><p><i>(González et al. 2017)</i></p>
@@ -49,12 +52,12 @@
         <a href="http://www.bioone.org/doi/10.1667/RR2944.1?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed">The Photon-Isoeffective Dose in Boron Neutron Capture Therapy</a><p><i>(González & Santa Cruz 2012)</i></p>
       </li>
     </ul>
-    <p>An excel table of four componentes of absorbed dose rates in tumor is needed for calculation. No headers are required and the table should be organized as follow:</p>
+    <p>An excel table listing the four main absorbed dose rate components in BNCT is needed for calculations. Column headers are not allowed in the table. The information must be organized as follows:</p>
     
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th scope="col" style="text-align:center; font-size:small;">Boron dose rate [Gy/min]</th>
+          <th scope="col" style="text-align:center; font-size:small;">Boron dose rate [Gy/min.ppm]</th>
           <th scope="col" style="text-align:center; font-size:small;">Thermal dose rate [Gy/min]</th>
           <th scope="col" style="text-align:center; font-size:small;">Fast dose rate [Gy/min]</th>
           <th scope="col" style="text-align:center; font-size:small;">Gamma dose rate [Gy/min]</th>
@@ -170,33 +173,17 @@
 </div>
 </body>
 <footer class="page-footer font-small teal pt-4">
-
-  <!-- Footer Text -->
   <div class="container-fluid text-center text-md-left">
-
-    <!-- Grid row -->
     <div class="row justify-content-md-center" style="background-color:#343a40;">
       <div class="col col-lg-12" style="font-size:small; text-align: justify;">
         <h5 style="color:#8d8d8e; margin-top:10px;">Disclaimer</h5>
-        <p style="color:#c9cacc;">The Developers have taken all reasonable steps to ensure the accuracy of the information on this web site. However we can give no warranty regarding the accuracy or completeness of the content of this web site. Hence we accept no liability for any losses or damages (whether direct, indirect, special, consequential or otherwise) arising out of errors or omissions contained in this web site. The Developers reserves the right to update, add, amend, remove, replace or change any part of the web site content, including but not limited to functionality and navigation at any time without prior notice. The Developers shall not be liable for distortion of data arising from any technical fault including transmission errors, technical defects, interruptions, third party intervention or viruses. </p>
+        <p style="color:#c9cacc;">The Developers have taken all reasonable steps to ensure the accuracy of the information on this web site. However, we can give no warranty regarding the accuracy or completeness of the content of this web site. Hence we accept no liability for any losses or damages (whether direct, indirect, special, consequential or otherwise) arising out of errors or omissions contained in this web site. The Developers reserves the right to update, add, amend, remove, replace or change any part of the web site content, including but not limited to functionality and navigation at any time without prior notice. The Developers shall not be liable for distortion of data arising from any technical fault including transmission errors, technical defects, interruptions, third party intervention or viruses. </p>
       </div>
     </div>
-    <!-- Grid row -->
-
   </div>
-  <!-- Footer Text -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3" style="background-color:#1f2326; color:#8d8d8e; font-size:10pt; ">© 2018 Copyright:<span style="color:#2b96f7"> 🇦🇷 Argentina BNCT Group</span>
+  <div class="footer-copyright text-center py-3" style="background-color:#1f2326; color:#8d8d8e; font-size:10pt; ">© 2018 Copyright:<span style="color:#2b96f7"> 🇦🇷 Argentine BNCT Group</span>
   </div>
-  <!-- Copyright -->
-
 </footer>
-
-
-
-<!-- Footer -->
-
 </html>
 
 
