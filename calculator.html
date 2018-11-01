@@ -51,16 +51,16 @@
     </ul>
     <p>An excel table of four componentes of absorbed dose rates in tumor is needed for calculation. Not headers are required and the table should be order as follow:</p>
     
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col" style="text-align:center; font-size:small;">Boron dose rate [Gy/min]</th>
-      <th scope="col" style="text-align:center; font-size:small;">Thermal dose rate [Gy/min]</th>
-      <th scope="col" style="text-align:center; font-size:small;">Fast dose rate [Gy/min]</th>
-      <th scope="col" style="text-align:center; font-size:small;">Gamma dose rate [Gy/min]</th>
-    </tr>
-  </thead>
-</table>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" style="text-align:center; font-size:small;">Boron dose rate [Gy/min]</th>
+          <th scope="col" style="text-align:center; font-size:small;">Thermal dose rate [Gy/min]</th>
+          <th scope="col" style="text-align:center; font-size:small;">Fast dose rate [Gy/min]</th>
+          <th scope="col" style="text-align:center; font-size:small;">Gamma dose rate [Gy/min]</th>
+        </tr>
+      </thead>
+    </table>
 
     <br>
     <div style=" vertical-align:middle; text-align:center">
@@ -74,7 +74,16 @@
     <h3>Calculator</h3>
     <p>Tumor Boron concentration [ppm]: <input id="b10tumor"></p>
     <p>Irradiation Time [min]: <input id="tir"></p>
-    <p>Dose Values: <input type="file" id="excelfile" /> <input type="button" id="viewfile" value="Calculate" onclick="ExportToTable()"  class="btn btn-dark"/></p>
+    <p>Dose Values: </p>
+    <input  type="file" id="excelfile" /><br><br>
+    <div style=" vertical-align:middle; text-align:center">
+
+      <input type="button" id="viewfile" value="Calculate" onclick="ExportToTable()"  class="btn btn-dark"/></p>
+    </div>
+
+    
+
+
     <p id="alert"></p>
   </div>
   <div class = "container" id="tabla_datos" style=" display: none;">
