@@ -155,13 +155,13 @@ var chart = new Chart(ctx, {
     // The data for our dataset
     data: {
         datasets: [{
-            label: "Iso Effective",
+            label: "Iso Effective [Gyiso]",
             fill: false,
             borderColor: 'rgb(255, 99, 132)',
             data: data,
             radius: 0,
         },{
-            label: "RBE Equivalent",
+            label: "RBE Equivalent [Gyw]",
             fill: false,
             borderColor: 'rgb(132, 99, 255)',
             data: data2,
@@ -252,21 +252,21 @@ function isoE(jsondata){
     
     for (var i = 0; i < jsondata.length; i++) {
         Dt = (btumor*jsondata[i].boron) +(jsondata[i].thermal)+(jsondata[i].fast)+(jsondata[i].gamma);
-        
+
         p_bnctB = (jsondata[i].boron*btumor)/Dt;
         p_bnctN = (jsondata[i].thermal+jsondata[i].fast)/Dt;
         p_g = jsondata[i].gamma/Dt;
-        
+
         G_12 = Gs-(p_bnctB*pf_bnct+p_bnctN*pf_bnct)*(Gs-Gf);
         G_23 = Gs-(p_bnctN*pf_bnct+p_g*pf_g)*(Gs-Gf);
         G_31 = Gs-(p_g*pf_g+p_bnctB*pf_bnct)*(Gs-Gf);
-        
+
         Dosis_Tlineal = alphaboro*(jsondata[i].boron*btumor);
         Dosis_Tlineal += (alphanth*jsondata[i].thermal);
         Dosis_Tlineal += (alphanfast*jsondata[i].fast);
         Dosis_Tlineal += (alpha_r*jsondata[i].gamma);
         Dosis_Tlineal = Dosis_Tlineal*tir;
-        
+
         Dosis_Tcuad =  G_11*beta_boro*Math.pow(jsondata[i].boron*btumor,2);
         Dosis_Tcuad += G_22*beta_nth*Math.pow(jsondata[i].thermal,2);
         Dosis_Tcuad += G_22*beta_nfast*Math.pow(jsondata[i].fast,2);

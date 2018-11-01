@@ -37,7 +37,42 @@
     </div>  
   </nav>
   <br>
-  <div class="container" style="margin-top:80px;">
+  <div class="container" style="margin-top:50px">
+
+    <h3>Photon-Isoeffective dose calculator</h3>
+    <p>At the moment, this webapp allow you to calculate photon-isoeffective doses for head and neck tumors treated with BNCT. More models will be added in near future. The formalism of the calculation is described in the follow withe papers:</p>
+    <ul>
+      <li>
+        <a href="http://iopscience.iop.org/article/10.1088/1361-6560/aa8986/meta">Photon iso-effective dose for cancer treatment with mixed field radiation based on dose–response assessment from human and an animal model: clinical application to boron neutron capture therapy for head and neck cancer</a><p><i>(González et al. 2017)</i></p>
+      </li>
+      <li>
+        <a href="http://www.bioone.org/doi/10.1667/RR2944.1?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed">The Photon-Isoeffective Dose in Boron Neutron Capture Therapy</a><p><i>(González et al. 2012)</i></p>
+      </li>
+    </ul>
+    <p>An excel table of four componentes of absorbed dose rates in tumor is needed for calculation. Not headers are required and the table should be order as follow:</p>
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col border" style='text-align: center;'>Boron dose rate [Gy/min]
+        </div>
+        <div class="col border" style='text-align: center;'> Thermal dose rate [Gy/min]
+        </div>
+        <div class="col border" style='text-align: center;'> Fast dose rate [Gy/min]
+        </div>
+        <div class="col border" style='text-align: center;'> Gamma dose rate [Gy/min]
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+    <br>
+    <div style=" vertical-align:middle; text-align:center">
+      <img src="exceltable.png" style="width:50%;height:50%;">
+      <p>Input table example</p>
+    </div>
+    
+  </div>
+  <hr />
+  <div class="container">
     <h3>Calculator</h3>
     <p>Tumor Boron concentration [ppm]: <input id="b10tumor"></p>
     <p>Irradiation Time [min]: <input id="tir"></p>
@@ -52,12 +87,12 @@
         <table class="table table-sm fixed_header">
           <thead class="table-dark">
             <tr>
-              <th style='text-align: center;'>Boron</th>
-              <th style='text-align: center;'>Thermal</th>
-              <th style='text-align: center;'>Fast</th>
-              <th style='text-align: center;'>Gamma</th>
-              <th style='text-align: center;'>Dw</th>
-              <th style='text-align: center;'>isoE</th>
+              <th style='text-align: center;'>Boron [Gy/min]</th>
+              <th style='text-align: center;'>Thermal [Gy/min]</th>
+              <th style='text-align: center;'>Fast [Gy/min]</th>
+              <th style='text-align: center;'>Gamma [Gy/min]</th>
+              <th style='text-align: center;'>Dw [Gyw]</th>
+              <th style='text-align: center;'>isoE [Gyiso]</th>
             </tr>
           </thead>
           <tbody id="exceltable">
@@ -72,8 +107,8 @@
     <div class="row">
       <div class="col">
       </div>
-      <div class="col-10 row table-dark" style='text-align: center;'>
-       Iso-Effective FOMS:
+      <div class="col-10 row table-dark" style="text-align: center;">
+       Iso-Effective:
      </div>
      <div class="col">
      </div>
@@ -93,8 +128,8 @@
   <div class="row">
     <div class="col">
     </div>
-    <div class="col-10 row table-dark" style='text-align: center;'>
-     RBE equivalent FOMS:
+    <div class="col-10 row table-dark" style="text-align: center;">
+     RBE equivalent:
    </div>
    <div class="col">
    </div>
@@ -115,7 +150,7 @@
 <div class="row">
   <div class="col">
   </div>
-  <div class="col-10 row table-dark" style='text-align: center;'>
+  <div class="col-10 row table-dark" style="text-align: center;">
    DVH:
  </div>
  <div class="col">
@@ -126,12 +161,36 @@
 <div class="container">
   <canvas id="myChart"></canvas>
 </div>
-
-<!--    <table class="table table-sm" id="exceltable">  
-</table> --> 
-
-
 </body>
+<footer class="page-footer font-small teal pt-4">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row justify-content-md-center" style="background-color:#343a40;">
+      <div class="col col-lg-12" style="font-size:small; text-align: justify;">
+        <h5 style="color:#8d8d8e; margin-top:10px;">Disclaimer</h5>
+        <p style="color:#c9cacc;">The Developers have taken all reasonable steps to ensure the accuracy of the information on this web site. However we can give no warranty regarding the accuracy or completeness of the content of this web site. Hence we accept no liability for any losses or damages (whether direct, indirect, special, consequential or otherwise) arising out of errors or omissions contained in this web site. The Developers reserves the right to update, add, amend, remove, replace or change any part of the web site content, including but not limited to functionality and navigation at any time without prior notice. The Developers shall not be liable for distortion of data arising from any technical fault including transmission errors, technical defects, interruptions, third party intervention or viruses. </p>
+      </div>
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Text -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="background-color:#1f2326; color:#8d8d8e; font-size:10pt; ">© 2018 Copyright:
+    <a href="https://bnct.com.ar"> bnct.com.ar</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
+
+
+<!-- Footer -->
+
 </html>
 
 
