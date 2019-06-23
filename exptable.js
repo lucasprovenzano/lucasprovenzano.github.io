@@ -7,7 +7,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (b10.length===0) { b10 = "15"; }
   // Validate input data
-  if (b10 < 0) {
+  if (b10 < 0 || isNaN(b10)) {
     alert("Please check Boron concentration value");
     return false
   }
@@ -17,7 +17,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (tir.length === 0) { tir = "60"; }
   // Validate input data
-  if (tir < 0) {
+  if (tir < 0 || isNaN(tir)) {
     alert("Please check Irradiation time value");
     return false
   }
@@ -27,7 +27,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (boronTumorRatio.length === 0) { boronTumorRatio =  3.5; }
   // Validate input data
-  if (boronTumorRatio < 0) {
+  if (boronTumorRatio < 0 || isNaN(boronTumorRatio)) {
     alert("Please check Tumor Boron Ratio value");
     return false
   }
@@ -38,7 +38,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (vx_vol.length === 0) { vx_vol = "0.1"; }
   // Validate input data
-  if (vx_vol < 0) {
+  if (vx_vol < 0 || isNaN(vx_vol)) {
     alert("Please check Irradiation time value");
     return false
   }
@@ -64,7 +64,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (boronMucosaRatio.length === 0) { boronMucosaRatio =  2; }
   // Validate input data
-  if (boronMucosaRatio < 0) {
+  if (boronMucosaRatio < 0 || isNaN(boronMucosaRatio)) {
     alert("Please check Mucosa Boron Ratio value");
     return false
   }
@@ -75,7 +75,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (boronDose.length === 0) { boronDose = 0.002; }
   // Validate input data
-  if (boronDose < 0) {
+  if (boronDose < 0 || isNaN(boronDose)) {
     alert("Please check Mucosa Boron Dose value");
     return false
   }
@@ -85,7 +85,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (thermalNeutronDose.length === 0) { thermalNeutronDose =  0.0054; }
   // Validate input data
-  if (thermalNeutronDose < 0) {
+  if (thermalNeutronDose < 0 || isNaN(thermalNeutronDose)) {
     alert("Please check Mucosa Thermal Neutron Dose value");
     return false
   }
@@ -95,7 +95,7 @@ function ExportToTable() {
   // Check if form input is empty to use default values
   if (fastNeutronDose.length === 0) { fastNeutronDose =  0.0013; }
   // Validate input data
-  if (fastNeutronDose < 0) {
+  if (fastNeutronDose < 0 || isNaN(fastNeutronDose)) {
     alert("Please check Mucosa Fast Neutron Dose value");
     return false
   }
@@ -103,7 +103,7 @@ function ExportToTable() {
   // Get mucosa thermal neutron dose from HTML form
   var gammaDose = document.getElementById("gammaDose").value;
   // Check if form input is empty to use default values
-  if (gammaDose.length === 0) { gammaDose =  0.024; }
+  if (gammaDose.length === 0 || isNaN(gammaDose)) { gammaDose =  0.024; }
   // Validate input data
   if (gammaDose < 0) {
     alert("Please check Mucosa Gamma Dose value");
