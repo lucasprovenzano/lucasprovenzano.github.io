@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"ex",
+				"exceljson"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"exce",
+				"excelfile"
+			],
+			[
+				"back",
+				"background-color\tproperty"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
 				"di",
 				"display\tproperty"
 			],
@@ -52,10 +80,6 @@
 				"DibujarTabla"
 			],
 			[
-				"fun",
-				"function"
-			],
-			[
 				"shee",
 				"sheet_name_list"
 			],
@@ -68,36 +92,27 @@
 	"buffers":
 	[
 		{
-			"file": "bibliography.html",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1960,
+				"buffer_size": 3854,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "exptable.js",
+			"file": "faqs.html",
 			"settings":
 			{
-				"buffer_size": 12095,
-				"encoding": "UTF-8",
+				"buffer_size": 2003,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "function isoE(jsondata,tir,b10){\n    // components >> jsondata[i].x\n    var btumor =  3.5*b10;\n    \n    var alpha_r = 0.02957;\n    var beta_r = alpha_r/10;\n    var alphabeta_r = alpha_r/beta_r;\n    \n    var alphaboro = 0.34039;\n    var beta_boro = (1.16e-4)*(1.16e-4);\n    \n    var alphanth = 0.3603;\n    var beta_nth = (7.22e-5)*(7.22e-5);\n    \n    var alphanfast = alphanth;\n    var beta_nfast = beta_nth;\n    \n    // Datos Schmid 2010,HeLa cells\n    var tof = 24/0.693;\n    var tos = 14*60/0.693;\n    // Proporciones Schmid (low LET), Schmid (high LET)\n    var pf_g = 0.53;\n    var ps_g = 0.47;\n    var pf_bnct = 0.2;\n    var ps_bnct = 0.8;\n    // Time: tiempo referencia irrad con fotones\n    var time = 30;\n    var xf = tof/time;\n    var xs = tos/time;\n    \n    var Gf = 2*xf*(1-xf*(1-math.exp(-1/xf)));\n    var Gs = 2*xs*(1-xs*(1-math.exp(-1/xs)));\n    \n    // Contribuciones de cada componente\n    var p_g = 1;\n    var p_bnct = 0;\n    var Gr = Gs-(p_g*pf_g+p_bnct*pf_bnct)*(Gs-Gf);\n    \n    xf = tof/tir;\n    xs = tos/tir;\n    \n    Gf = 2*xf*(1-xf*(1-math.exp(-1/xf)));\n    Gs = 2*xs*(1-xs*(1-math.exp(-1/xs)));\n    \n    var p_bnctB;\n    var p_bnctN;\n    var p_g;\n    var G_12;\n    var G_23;\n    var G_31;\n    var Dt;\n    var Dosis_Tlineal;\n    var Dosis_Tcuad;\n\n    var G_11 = pf_bnct*Gf+ps_bnct*Gs;\n    var G_22 = G_11;\n    var G_33 = pf_g*Gf+ps_g*Gs;\n    \n    for (var i = 0; i < jsondata.length; i++) {\n        Dt = (btumor*jsondata[i].boron) +(jsondata[i].thermal)+(jsondata[i].fast)+(jsondata[i].gamma);\n    \n        p_bnctB = (jsondata.boron[i]*btumor)/Dt;\n        p_bnctN = (jsondata.thermal[i]+jsondata.fast[i])/Dt;\n        p_g = jsondata.gamma[i]/Dt;\n    \n        G_12 = Gs-(p_bnctB*pf_bnct+p_bnctN*pf_bnct)*(Gs-Gf);\n        G_23 = Gs-(p_bnctN*pf_bnct+p_g*pf_g)*(Gs-Gf);\n        G_31 = Gs-(p_g*pf_g+p_bnctB*pf_bnct)*(Gs-Gf);\n    \n        Dosis_Tlineal = alphaboro*(jsondata.boron[i]*btumor);\n        Dosis_Tlineal += (alphanth*jsondata.thermal[i]);\n        Dosis_Tlineal += (alphanfast*jsondata.fast[i]);\n        Dosis_Tlineal += (alpha_r*jsondata.gamma[i]);\n        Dosis_Tlineal = Dosis_Tlineal*tir;\n    \n        Dosis_Tcuad =  G_11*beta_boro*Math.pow(jsondata.boro[i]*btumor,2);\n        Dosis_Tcuad += G_22*beta_nth*Math.pow(jsondata.thermal[i],2);\n        Dosis_Tcuad += G_22*beta_nfast.*Math.pow(jsondata.fast[i],2);\n        Dosis_Tcuad += G_33*beta_r*Math.pow(jsondata.gamma[i],2);\n        Dosis_Tcuad += (2*G_12*Math.pow(beta_boro*beta_nth,0.5)*(jsondata.boron[i]*btumor)*(jsondata.thermal[i]));\n        Dosis_Tcuad += (2*G_12*Math.pow(beta_boro*beta_nfast,0.5)*(jsondata.boron[i]*btumor)*(jsondata.fast[i]));\n        Dosis_Tcuad += (2*G_31*Math.pow(beta_boro*beta_r,0.5)*(jsondata.boron[i]*btumor)*(jsondata.gamma[i]));\n        Dosis_Tcuad += (2*G_11*Math.pow(beta_nth*beta_nfast,0.5)*(jsondata.thermal[i])*(jsondata.fast[i]));\n        Dosis_Tcuad += (2*G_23*Math.pow(beta_nth*beta_r,0.5)*(jsondata.thermal[i])*(jsondata.gamma[i]));\n        Dosis_Tcuad += (2*G_31*Math.pow(beta_nfast*beta_r,0.5)*(jsondata.thermal[i])*(jsondata.gamma[i]));\n        Dosis_Tcuad = Math.pow(Dosis_Tcuad*tir,2);\n        \n        jsondata.iso[i] = 0.5*(alphabeta_r/Gr)*(Math.pow(1+(4*Gr/alpha_r/alphabeta_r)*(Dosis_Tlineal+Dosis_Tcuad),0.5)-1);\n    }\n}\n",
+			"file": "contact.html",
 			"settings":
 			{
-				"buffer_size": 3256,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/css_tablas.css",
-			"settings":
-			{
-				"buffer_size": 368,
+				"buffer_size": 3690,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -106,7 +121,16 @@
 			"file": "calculator.html",
 			"settings":
 			{
-				"buffer_size": 4195,
+				"buffer_size": 8737,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "exptable.js",
+			"settings":
+			{
+				"buffer_size": 16186,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -123,6 +147,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"i",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			]
 		],
 		"width": 0.0
 	},
@@ -131,6 +163,8 @@
 		"height": 151.0,
 		"history":
 		[
+			"git init",
+			"git "
 		]
 	},
 	"distraction_free":
@@ -144,10 +178,15 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/lucasprovenzano/Desktop/isoweb"
+		"/Users/lucasprovenzano/Desktop/Head & Neck/isoweb"
 	],
 	"file_history":
 	[
+		"/Users/lucasprovenzano/Desktop/Head & Neck/isoweb/css/css_tablas.css",
+		"/Users/lucasprovenzano/Desktop/Head & Neck/isoweb/CNAME",
+		"/Users/lucasprovenzano/Desktop/isoweb/css/css_tablas.css",
+		"/Users/lucasprovenzano/Desktop/isoweb/bibliography.html",
+		"/Users/lucasprovenzano/Desktop/isoweb/exptable.js",
 		"/Users/lucasprovenzano/Desktop/isoweb/calculator.html",
 		"/Users/lucasprovenzano/Desktop/isoweb/background.html",
 		"/Users/lucasprovenzano/Desktop/isoweb/index.html",
@@ -211,7 +250,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -225,6 +264,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"if",
+			"Effective",
 			"jsondata.",
 			".table-sm",
 			"body",
@@ -238,7 +279,7 @@
 		[
 			"jsondata[i]."
 		],
-		"reverse": false,
+		"reverse": true,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -247,24 +288,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "bibliography.html",
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1960,
+						"buffer_size": 3854,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								371,
-								159
+								915,
+								915
 							]
 						],
 						"settings":
@@ -282,40 +323,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "exptable.js",
-					"semi_transient": false,
+					"file": "faqs.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 12095,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6371,
-								6371
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3138.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3256,
+						"buffer_size": 2003,
 						"regions":
 						{
 						},
@@ -323,14 +335,13 @@
 						[
 							[
 								0,
-								3256
+								0
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -341,25 +352,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "css/css_tablas.css",
+					"buffer": 2,
+					"file": "contact.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 368,
+						"buffer_size": 3690,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								365,
-								365
+								1861,
+								1861
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -368,6 +379,36 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "calculator.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								894,
+								894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -378,29 +419,29 @@
 			[
 				{
 					"buffer": 4,
-					"file": "calculator.html",
+					"file": "exptable.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4195,
+						"buffer_size": 16186,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3977,
-								3977
+								15627,
+								15627
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1782.0,
+						"translation.y": 867.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -411,7 +452,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 39.0
 	},
 	"input":
 	{
@@ -442,7 +483,7 @@
 		"rows":
 		[
 			0.0,
-			0.229222604054,
+			0.479725196555,
 			1.0
 		]
 	},
@@ -455,7 +496,7 @@
 	"project": "isoweb.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -485,7 +526,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -493,7 +534,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 349.0,
+	"side_bar_width": 225.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

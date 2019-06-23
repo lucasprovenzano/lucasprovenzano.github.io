@@ -16,8 +16,8 @@
 }
 
 .fixed_header thead {
-  background: black;
-  color:#fff;
+  background: #343a40;
+  color:#f8f9fa;
 }
 
 .fixed_header th, .fixed_header td {
